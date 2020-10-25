@@ -12,7 +12,7 @@ from linebot.models import (
 )
 
 # customer module
-import corwler
+#import corwler
 
 
 app = Flask(__name__)
