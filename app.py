@@ -45,7 +45,7 @@ def handle_message(event):
     
     message = event.message.text
     
-    if message == "即時匯率":
+    if message == "匯率查詢":
         # 取得最新評價
         text = corwler.exchangeRate()
         # 包裝訊息
