@@ -12,7 +12,7 @@ from linebot.models import (
 )
 
 # customer module
-#import corwler
+import crowler
 
 
 app = Flask(__name__)
@@ -45,16 +45,16 @@ def handle_message(event):
     
     message = event.message.text
     
-    '''if message == "匯率查詢":
+    if message == "匯率查詢":
         # 取得最新評價
-        text = corwler.exchangeRate()
+        text = crowler.exchangeRate()
         # 包裝訊息
         remessage = TextSendMessage(text=text)
         # 回應使用者
         line_bot_api.reply_message(
                         event.reply_token,
                         remessage)
-        return 0 '''
+        return 0
     
     
     line_bot_api.reply_message(
