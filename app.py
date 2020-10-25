@@ -45,7 +45,7 @@ def handle_message(event):
     
     message = event.message.text
     
-    if message == "匯率查詢":
+    '''if message == "匯率查詢":
         # 取得最新評價
         text = corwler.exchangeRate()
         # 包裝訊息
@@ -54,15 +54,13 @@ def handle_message(event):
         line_bot_api.reply_message(
                         event.reply_token,
                         remessage)
-        return 0 
+        return 0 '''
     
     
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
     
-
-        
 
 if __name__ == "__main__":
     app.run()
