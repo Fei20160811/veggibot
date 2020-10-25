@@ -11,10 +11,14 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
+# customer module
+import corwler
+
+
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('')
-handler = WebhookHandler('')
+line_bot_api = LineBotApi('NC+N9SCHuxKdRYSSqNQ4BargO6N9siKlYuadJavs64TYXRN/dULKYj9/Ysx8qtXXVE98UVxvCzhvHIrPAwLBSChxQ2wfR/DauR4LsBncn3o5mDL9hQ+v7caE+WI32jKBkywrHMVOTTok3ylxpwIxdgdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('873eda116b01fb8f950dbad2d030de08')
 
 
 @app.route("/callback", methods=['POST'])
@@ -38,12 +42,27 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    
+    message = event.message.text
+    
+    if message == "即時匯率":
+        # 取得最新評價
+        text = corwler.exchangeRate()
+        # 包裝訊息
+        remessage = TextSendMessage(text=text)
+        # 回應使用者
+        line_bot_api.reply_message(
+                        event.reply_token,
+                        remessage)
+        return 0 
+    
+    
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
     
-    
 
+        
 
 if __name__ == "__main__":
     app.run()
