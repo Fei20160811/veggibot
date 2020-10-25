@@ -26,7 +26,7 @@ def exchangeRate():
 
         if idx == 16:
             tds = tr.find_all('td')
-            myStr +="幣別:歐元(EUR) =>"  + " 即期買入：" + tds[3].text + "/即期賣出：" + tds[4].text + "\n"
+            myStr +="幣別:歐元(EUR) =>"  + " 即期買入：" + tds[3].text + "/即期賣出：" + tds[4].text
     #此表格是牌告匯率，表格分為七直欄，第一直欄是幣別，
     #第四直欄是本行買入即期匯率，第五直欄是本行賣出即期匯率
     return myStr
