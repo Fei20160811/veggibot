@@ -1,2 +1,5 @@
+#虛擬環境
 botVenv/
+
+#Mac的執行檔案
 .DS_Store
